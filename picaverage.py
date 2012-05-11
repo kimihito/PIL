@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import Image
-from operator import *
+import numpy as np
 
 def picaverage(x, y, im):
   w, h = im.size
@@ -13,8 +13,6 @@ def picaverage(x, y, im):
             for j in range(-2, 3)
             if 0 <= x+i < w and 0 <= y+j < h]
 
-  rgb = zip(*pixels)
-  rgb = map(lambda c: reduce(add, c, 0), rgb)
-  rgb = map(lambda c: c / len(pixels), rgb)
+  rgb = map(np.average, zip(*pixels))
   
   return rgb
