@@ -13,6 +13,4 @@ def picaverage(x, y, im):
             for j in range(-2, 3)
             if 0 <= x+i < w and 0 <= y+j < h]
 
-  rgb = map(np.average, zip(*pixels))
-  
-  return rgb
+  return map(np.average, zip(*pixels))
