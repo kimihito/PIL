@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 import Image
+cimport cython
 
-def picaverage(x, y, im):
+@cython.wraparound(False)
+def picaverage(int x, int y, im):
+  cdef int w, h
+  cdef int left, upper, right, lower
+  cdef int l
+  
   w, h = im.size
   if x < 0 or y < 0 or w < x or h < y or im.mode != 'RGB':
     raise Exception('argument error')

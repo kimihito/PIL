@@ -18,8 +18,12 @@ def picaverage(x, y, im):
   if lower > h:
     lower = h
 
-  totalpixels = [0, 0, 0]  
-  pixels = im.crop((left, upper, right, lower)).getdata()
+  data = im.getdata()
+  for y in range(left, right + 1):
+    for x in range(upper, lower + 1):
+      pixel = data[y * w + x]
+  totalpixels = [0, 0, 0]
+  pixels = 
   for pixel in pixels:
     totalpixels[0] += pixel[0]
     totalpixels[1] += pixel[1]
